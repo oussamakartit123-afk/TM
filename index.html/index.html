@@ -1,367 +1,266 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض السيارات</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-        }
-        body {
-            background-color: #0f0f0f;
-            color: #fff;
-        }
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(15,15,15,0.9);
-            backdrop-filter: blur(10px);
-            padding: 18px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #2a2a2a;
-            z-index: 100;
-        }
-        nav h2 {
-            background: linear-gradient(45deg, #e63946, #ff8fa3);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-size: 24px;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-        nav a {
-            color: #ccc;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #e63946;
-        }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
-                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600') center/cover;
-            text-align: center;
-            padding: 140px 20px;
-        }
-        .hero h1 {
-            font-size: 52px;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        .hero span {
-            color: #e63946;
-        }
-        .hero p {
-            font-size: 18px;
-            color: #ddd;
-            margin-bottom: 30px;
-        }
-        .hero button {
-            background: linear-gradient(45deg, #e63946, #ff4d6d);
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            font-size: 16px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .hero button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(230,57,70,0.4);
-        }
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin: 60px 0 10px;
-        }
-        .section-title span {
-            color: #e63946;
-        }
-        .section-sub {
-            text-align: center;
-            color: #999;
-            margin-bottom: 40px;
-        }
-        .cars-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            padding: 0 20px 60px;
-        }
-        .car-card {
-            background: #1a1a1a;
-            width: 300px;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: transform 0.35s, box-shadow 0.35s;
-            border: 1px solid #2a2a2a;
-        }
-        .car-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(230,57,70,0.25);
-            border-color: #e63946;
-        }
-        .car-card img {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-        }
-        .car-info {
-            padding: 18px;
-        }
-        .car-info h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-        .car-tags {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-        .tag {
-            background: #2a2a2a;
-            color: #ccc;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-        .price {
-            color: #e63946;
-            font-weight: bold;
-            font-size: 20px;
-            margin-top: 6px;
-        }
-        footer {
-            text-align: center;
-            padding: 35px;
-            background: #1a1a1a;
-            border-top: 1px solid #2a2a2a;
-            color: #999;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معرض السيارات الفاخر</title>
+<style>
+:root{
+  --eco:#3a86ff; --suv:#06d6a0; --lux:#ffd60a; --sport:#e63946;
+  --bg:#0d0d0d; --card:#1a1a1a;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Arial,sans-serif}
+body{background:var(--bg);color:#fff;overflow-x:hidden}
+
+nav{position:sticky;top:0;z-index:200;background:rgba(13,13,13,.92);backdrop-filter:blur(10px);
+   display:flex;align-items:center;justify-content:space-between;padding:14px 25px;border-bottom:1px solid #222;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:800;background:linear-gradient(45deg,#e63946,#ffd60a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cats{display:flex;gap:18px;list-style:none;flex-wrap:wrap}
+.cats a{color:#ccc;text-decoration:none;font-size:14px;font-weight:600;padding:6px 12px;border-radius:20px;transition:.3s}
+.cats a:nth-child(1):hover{background:var(--eco)}
+.cats a:nth-child(2):hover{background:var(--suv)}
+.cats a:nth-child(3):hover{background:var(--lux);color:#000}
+.cats a:nth-child(4):hover{background:var(--sport)}
+#adminBtn{background:#222;color:#fff;border:1px solid #444;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600}
+#adminBtn:hover{background:#e63946;border-color:#e63946}
+
+.hero{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600') center/cover;
+   text-align:center;padding:120px 20px;position:relative}
+.hero h1{font-size:clamp(32px,6vw,56px);opacity:0;animation:fadeUp 1s ease forwards}
+.hero h1 span{color:var(--sport)}
+.hero p{margin-top:14px;color:#ddd;font-size:18px;opacity:0;animation:fadeUp 1s ease .3s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+.section-title{text-align:center;font-size:30px;margin:55px 0 8px}
+.section-sub{text-align:center;color:#888;margin-bottom:35px}
+.bar{width:60px;height:4px;margin:14px auto 0;border-radius:4px}
+
+.grid{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;padding:0 20px 60px}
+.car{background:var(--card);width:290px;border-radius:16px;overflow:hidden;border:1px solid #262626;
+     opacity:0;transform:translateY(40px);transition:all .6s ease,box-shadow .3s,border-color .3s,transform .3s}
+.car.show{opacity:1;transform:translateY(0)}
+.car:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.car img{width:100%;height:180px;object-fit:cover;transition:transform .5s}
+.car:hover img{transform:scale(1.08)}
+.info{padding:16px}
+.info h3{font-size:17px;margin-bottom:8px}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:10px;color:#000}
+.eco .badge{background:var(--eco);color:#fff}
+.suv .badge{background:var(--suv);color:#000}
+.lux .badge{background:var(--lux);color:#000}
+.sport .badge{background:var(--sport);color:#fff}
+.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.price{font-size:20px;font-weight:800}
+.eco .price{color:var(--eco)} .suv .price{color:var(--suv)} .lux .price{color:var(--lux)} .sport .price{color:var(--sport)}
+.editBtn{display:none;background:#333;border:none;color:#fff;padding:5px 10px;border-radius:8px;cursor:pointer;font-size:12px}
+.admin .editBtn{display:inline-block}
+
+footer{text-align:center;padding:30px;background:#161616;border-top:1px solid #262626;color:#777;font-size:14px}
+
+/* Login modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:999}
+.overlay.active{display:flex}
+.modal{background:#1a1a1a;padding:30px;border-radius:16px;width:90%;max-width:340px;text-align:center;border:1px solid #333;
+       transform:scale(.8);transition:.3s}
+.overlay.active .modal{transform:scale(1)}
+.modal h3{margin-bottom:18px}
+.modal input{width:100%;padding:11px;margin:8px 0;border-radius:8px;border:1px solid #444;background:#111;color:#fff}
+.modal button{width:100%;padding:11px;margin-top:10px;border:none;border-radius:8px;background:var(--sport);color:#fff;font-weight:700;cursor:pointer}
+.modal .close{background:#333;margin-top:6px}
+.msg{font-size:13px;margin-top:6px;height:16px}
+
+@media(max-width:600px){
+  nav{justify-content:center;gap:10px}
+  .cats{justify-content:center;width:100%}
+}
+</style>
 </head>
 <body>
 
-    <nav>
-        <h2>معرض السيارات</h2>
-        <ul>
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">السيارات</a></li>
-            <li><a href="#">تواصل معنا</a></li>
-        </ul>
-    </nav>
+<nav>
+  <div class="logo">معرض السيارات</div>
+  <ul class="cats">
+    <li><a href="#eco">اقتصادية</a></li>
+    <li><a href="#suv">SUV</a></li>
+    <li><a href="#lux">فاخرة</a></li>
+    <li><a href="#sport">رياضية</a></li>
+  </ul>
+  <button id="adminBtn" onclick="openLogin()">تسجيل دخول الأدمن</button>
+</nav>
 
-    <div class="hero">
-        <h1>أفضل <span>السيارات</span> بانتظارك</h1>
-        <p>تشكيلة فاخرة من 20 سيارة جديدة ومستعملة بأفضل الأسعار</p>
-        <button>تصفح السيارات</button>
-    </div>
+<div class="hero">
+  <h1>أفضل <span>السيارات</span> بانتظارك</h1>
+  <p>تشكيلة كاملة من جميع الفئات بأسعار حقيقية ومحدثة</p>
+</div>
 
-    <h2 class="section-title">تشكيلتنا <span>المميزة</span></h2>
-    <p class="section-sub">اختر من بين 20 سيارة متاحة حالياً</p>
+<!-- اقتصادية -->
+<h2 class="section-title" id="eco">سيارات <span style="color:var(--eco)">اقتصادية</span></h2>
+<p class="section-sub">خيارات موفرة وعملية لقيادتك اليومية</p>
+<div class="bar" style="background:var(--eco)"></div>
+<div class="grid">
+  <div class="car eco"><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400"><div class="info">
+    <span class="badge">اقتصادية</span><h3>كيا بيكانتو 2023</h3>
+    <div class="price-row"><span class="price" data-price="320000">320,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car eco"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400"><div class="info">
+    <span class="badge">اقتصادية</span><h3>هيونداي أكسنت 2022</h3>
+    <div class="price-row"><span class="price" data-price="380000">380,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car eco"><img src="https://images.unsplash.com/photo-1518987048-93e29699e79a?w=400"><div class="info">
+    <span class="badge">اقتصادية</span><h3>شيفروليه سبارك 2021</h3>
+    <div class="price-row"><span class="price" data-price="290000">290,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car eco"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400"><div class="info">
+    <span class="badge">اقتصادية</span><h3>رينو لوجان 2022</h3>
+    <div class="price-row"><span class="price" data-price="350000">350,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+</div>
 
-    <div class="cars-container">
+<!-- SUV -->
+<h2 class="section-title" id="suv">سيارات <span style="color:var(--suv)">SUV</span></h2>
+<p class="section-sub">قوة واتساع لكل العائلة والرحلات</p>
+<div class="bar" style="background:var(--suv)"></div>
+<div class="grid">
+  <div class="car suv"><img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400"><div class="info">
+    <span class="badge">SUV</span><h3>هيونداي توسان 2023</h3>
+    <div class="price-row"><span class="price" data-price="950000">950,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car suv"><img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=400"><div class="info">
+    <span class="badge">SUV</span><h3>تويوتا راف فور 2022</h3>
+    <div class="price-row"><span class="price" data-price="1100000">1,100,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car suv"><img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400"><div class="info">
+    <span class="badge">SUV</span><h3>كيا سبورتاج 2023</h3>
+    <div class="price-row"><span class="price" data-price="880000">880,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car suv"><img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=400"><div class="info">
+    <span class="badge">SUV</span><h3>نيسان إكستريل 2021</h3>
+    <div class="price-row"><span class="price" data-price="750000">750,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+</div>
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1623869675781-80aa31012a5a?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>تويوتا كورولا 2023</h3>
-                <div class="car-tags"><span class="tag">جديدة</span></div>
-                <p class="price">350,000 ج.م</p>
-            </div>
-        </div>
+<!-- فاخرة -->
+<h2 class="section-title" id="lux">سيارات <span style="color:var(--lux)">فاخرة</span></h2>
+<p class="section-sub">رفاهية وتقنية بأعلى المستويات</p>
+<div class="bar" style="background:var(--lux)"></div>
+<div class="grid">
+  <div class="car lux"><img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=400"><div class="info">
+    <span class="badge">فاخرة</span><h3>مرسيدس E200 2023</h3>
+    <div class="price-row"><span class="price" data-price="2800000">2,800,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car lux"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400"><div class="info">
+    <span class="badge">فاخرة</span><h3>BMW 5 Series 2022</h3>
+    <div class="price-row"><span class="price" data-price="2600000">2,600,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car lux"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400"><div class="info">
+    <span class="badge">فاخرة</span><h3>أودي A6 2023</h3>
+    <div class="price-row"><span class="price" data-price="2900000">2,900,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car lux"><img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400"><div class="info">
+    <span class="badge">فاخرة</span><h3>لكزس ES 2022</h3>
+    <div class="price-row"><span class="price" data-price="2400000">2,400,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+</div>
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1629897048514-3dd7414efc14?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>هيونداي إلنترا 2022</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">420,000 ج.م</p>
-            </div>
-        </div>
+<!-- رياضية -->
+<h2 class="section-title" id="sport">سيارات <span style="color:var(--sport)">رياضية</span></h2>
+<p class="section-sub">سرعة وأداء استثنائي</p>
+<div class="bar" style="background:var(--sport)"></div>
+<div class="grid">
+  <div class="car sport"><img src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=400"><div class="info">
+    <span class="badge">رياضية</span><h3>فورد موستانج 2022</h3>
+    <div class="price-row"><span class="price" data-price="3200000">3,200,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car sport"><img src="https://images.unsplash.com/photo-1623869675781-80aa31012a5a?w=400"><div class="info">
+    <span class="badge">رياضية</span><h3>شيفروليه كامارو 2021</h3>
+    <div class="price-row"><span class="price" data-price="3000000">3,000,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car sport"><img src="https://images.unsplash.com/photo-1629897048514-3dd7414efc14?w=400"><div class="info">
+    <span class="badge">رياضية</span><h3>بورش 718 2023</h3>
+    <div class="price-row"><span class="price" data-price="5500000">5,500,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+  <div class="car sport"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400"><div class="info">
+    <span class="badge">رياضية</span><h3>تويوتا سوبرا 2022</h3>
+    <div class="price-row"><span class="price" data-price="3800000">3,800,000 ج.م</span><button class="editBtn" onclick="editPrice(this)">✎ تعديل</button></div>
+  </div></div>
+</div>
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>مرسيدس C200 2021</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">1,200,000 ج.م</p>
-            </div>
-        </div>
+<footer>جميع الحقوق محفوظة © 2026 - معرض السيارات</footer>
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>BMW X5 2023</h3>
-                <div class="car-tags"><span class="tag">جديدة</span></div>
-                <p class="price">2,500,000 ج.م</p>
-            </div>
-        </div>
+<!-- Login Modal -->
+<div class="overlay" id="loginOverlay">
+  <div class="modal">
+    <h3>تسجيل دخول الأدمن</h3>
+    <input type="text" id="userInput" placeholder="اسم المستخدم">
+    <input type="password" id="passInput" placeholder="كلمة المرور">
+    <div class="msg" id="loginMsg"></div>
+    <button onclick="checkLogin()">دخول</button>
+    <button class="close" onclick="closeLogin()">إغلاق</button>
+  </div>
+</div>
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>كيا سبورتاج 2022</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">650,000 ج.م</p>
-            </div>
-        </div>
+<script>
+// بيانات الأدمن - غيّرها لاسم/كلمة سر تختارها
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "admin123";
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>نيسان صني 2021</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">280,000 ج.م</p>
-            </div>
-        </div>
+function openLogin(){
+  if(localStorage.getItem('isAdmin')==='true'){
+    logoutAdmin(); return;
+  }
+  document.getElementById('loginOverlay').classList.add('active');
+}
+function closeLogin(){ document.getElementById('loginOverlay').classList.remove('active'); }
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>شيفروليه كروز 2020</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">320,000 ج.م</p>
-            </div>
-        </div>
+function checkLogin(){
+  const u=document.getElementById('userInput').value;
+  const p=document.getElementById('passInput').value;
+  if(u===ADMIN_USER && p===ADMIN_PASS){
+    localStorage.setItem('isAdmin','true');
+    document.body.classList.add('admin');
+    document.getElementById('adminBtn').textContent='تسجيل خروج الأدمن';
+    closeLogin();
+  } else {
+    document.getElementById('loginMsg').textContent='بيانات خاطئة';
+    document.getElementById('loginMsg').style.color='var(--sport)';
+  }
+}
+function logoutAdmin(){
+  localStorage.removeItem('isAdmin');
+  document.body.classList.remove('admin');
+  document.getElementById('adminBtn').textContent='تسجيل دخول الأدمن';
+}
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>هوندا سيفيك 2023</h3>
-                <div class="car-tags"><span class="tag">جديدة</span></div>
-                <p class="price">580,000 ج.م</p>
-            </div>
-        </div>
+// تعديل السعر (يحفظ محلياً في المتصفح فقط)
+function editPrice(btn){
+  const span=btn.previousElementSibling;
+  const current=span.dataset.price;
+  const newPrice=prompt("ادخل السعر الجديد بالأرقام فقط:", current);
+  if(newPrice && !isNaN(newPrice)){
+    span.dataset.price=newPrice;
+    span.textContent=Number(newPrice).toLocaleString('en-US')+" ج.م";
+    localStorage.setItem('price_'+span.closest('.car').querySelector('h3').textContent, newPrice);
+  }
+}
 
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>أودي A4 2022</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">1,400,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>فولكس فاجن جولف 2021</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">480,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>مازدا 3 2023</h3>
-                <div class="car-tags"><span class="tag">جديدة</span></div>
-                <p class="price">520,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>رينو لوجان 2020</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">230,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>بيجو 301 2022</h3>
-                <div class="car-tags"><span class="tag">جديدة</span></div>
-                <p class="price">380,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1518987048-93e29699e79a?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>سوزوكي سويفت 2021</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">260,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>فورد فوكس 2020</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">310,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1623869675781-80aa31012a5a?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>لكزس RX 2023</h3>
-                <div class="car-tags"><span class="tag">جديدة</span></div>
-                <p class="price">2,800,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1629897048514-3dd7414efc14?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>سكودا أوكتافيا 2022</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">550,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>ميتسوبيشي لانسر 2021</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">340,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>جيب رانجلر 2023</h3>
-                <div class="car-tags"><span class="tag">جديدة</span></div>
-                <p class="price">2,200,000 ج.م</p>
-            </div>
-        </div>
-
-        <div class="car-card">
-            <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400" alt="سيارة">
-            <div class="car-info">
-                <h3>سيات ليون 2022</h3>
-                <div class="car-tags"><span class="tag">مستعملة</span></div>
-                <p class="price">470,000 ج.م</p>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>جميع الحقوق محفوظة © 2026 - معرض السيارات</p>
-    </footer>
+// تحميل الأسعار المحفوظة + تسجيل دخول سابق
+window.onload=function(){
+  document.querySelectorAll('.price').forEach(span=>{
+    const name=span.closest('.car').querySelector('h3').textContent;
+    const saved=localStorage.getItem('price_'+name);
+    if(saved){ span.dataset.price=saved; span.textContent=Number(saved).toLocaleString('en-US')+" ج.م"; }
+  });
+  if(localStorage.getItem('isAdmin')==='true'){
+    document.body.classList.add('admin');
+    document.getElementById('adminBtn').textContent='تسجيل خروج الأدمن';
+  }
+  // أنيميشن ظهور الكروت عند السكرول
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+  },{threshold:0.15});
+  document.querySelectorAll('.car').forEach(c=>obs.observe(c));
+}
+</script>
 
 </body>
 </html>
